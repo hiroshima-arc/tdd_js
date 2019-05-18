@@ -45,6 +45,16 @@ touch Procfile
 
 ### 開発
 
+#### アプリケーションのセットアップ
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroshima-arc/tdd_js)
+
+```bash
+npm install
+npm run build
+npm start
+```
+
 #### 仕様
 
 #### 設計
