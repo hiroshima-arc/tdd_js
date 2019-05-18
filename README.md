@@ -21,6 +21,18 @@
 
 ### 構築
 
+#### 開発パッケージのセットアップ
+
+```bash
+npm init -y
+npm install --save-dev npm-run-all watch foreman cpx rimraf markdown-to-html
+npm install --save-dev prettier eslint babel-eslint
+npm install --save-dev browser-sync connect-browser-sync 
+npx browser-sync init
+npx eslint --init
+touch Procfile
+```
+
 **[⬆ back to top](#構成)**
 
 ### 配置
