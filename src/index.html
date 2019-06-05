@@ -122,20 +122,22 @@
       }
 
       function renderTable() {
-        let headerItem = () => {
-          let item = "<tr>";
-          [...Array(10).keys()].forEach(i => {
-            item += `<th>${i + 1}</th>`;
-          });
-          item += "</tr>";
-          return item;
-        };
+        const header = (() => {
+          let headerItem = () => {
+            let item = "<tr>";
+            [...Array(10).keys()].forEach(i => {
+              item += `<th>${i + 1}</th>`;
+            });
+            item += "</tr>";
+            return item;
+          };
 
-        let header = `
+          return `
             <thead>
               ${headerItem()}
             </thead>
         `;
+        })();
 
         let bodyItem = () => {
           item = "<tr>";
