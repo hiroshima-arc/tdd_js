@@ -139,20 +139,22 @@
         `;
         })();
 
-        let bodyItem = () => {
-          item = "<tr>";
-          generateList().forEach((v, k) => {
-            item += `<td>${v}</td>`;
-            if ((k + 1) % 10 === 0) item += "</tr><tr>";
-          });
-          return item;
-        };
+        const body = (() => {
+          let bodyItem = () => {
+            item = "<tr>";
+            generateList().forEach((v, k) => {
+              item += `<td>${v}</td>`;
+              if ((k + 1) % 10 === 0) item += "</tr><tr>";
+            });
+            return item;
+          };
 
-        let body = `
+          return `
             <tbody>
               ${bodyItem()}
             </tbody>
         `;
+        })();
 
         document.querySelector("#app").innerHTML = `
           <table>
