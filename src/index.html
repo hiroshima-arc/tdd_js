@@ -141,7 +141,7 @@
         let bodyItem = () => {
           let item = "<tr>";
           for (let i = 1; i <= 100; i++) {
-            item += `<td>${i}</td>`;
+            item += `<td>${fizzBuzz(i)}</td>`;
             if (i % 10 === 0) {
               item += `</tr><tr>`;
             }
