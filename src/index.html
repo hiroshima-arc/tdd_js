@@ -138,32 +138,20 @@
             </thead>
         `;
 
+        let bodyItem = () => {
+          let item = "<tr>";
+          for (let i = 1; i <= 100; i++) {
+            item += `<td>${i}</td>`;
+            if (i % 10 === 0) {
+              item += `</tr><tr>`;
+            }
+          }
+          return item;
+        };
+
         let body = `
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>Fizz</td>
-                <td>4</td>
-                <td>Buzz</td>
-                <td>Fizz</td>
-                <td>7</td>
-                <td>8</td>
-                <td>Fizz</td>
-                <td>Buzz</td>
-              </tr>
-              <tr>
-                <td>11</td>
-                <td>Fizz</td>
-                <td>13</td>
-                <td>14</td>
-                <td>FizzBuzz</td>
-                <td>16</td>
-                <td>17</td>
-                <td>Fizz</td>
-                <td>19</td>
-                <td>Buzz</td>
-              </tr>
+              ${bodyItem()}
             </tbody>
         `;
 
