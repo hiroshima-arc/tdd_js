@@ -145,11 +145,15 @@
 
       function fizzBuzz(number) {
         let result = number;
-        if (result % 3 === 0) {
+
+        if (result % 15 === 0) {
+          result = "FizzBuzz";
+        } else if (result % 3 === 0) {
           result = "Fizz";
         } else if (result % 5 === 0) {
           result = "Buzz";
         }
+
         return result;
       }
 
