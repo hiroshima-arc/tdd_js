@@ -129,6 +129,10 @@
           assert.equal(1, list[0]);
           assert.equal(100, list[99]);
         });
+
+        test("3で割り切れる場合はFizzをプリントする", () => {
+          assert.equal("Fizz", fizzBuzz(3));
+        });
       });
       function print1To100() {
         let list = [];
