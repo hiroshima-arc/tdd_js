@@ -123,8 +123,7 @@
       }
 
       function renderTable() {
-        let table = `
-          <table>
+        let header = `
             <thead>
               <tr>
                 <th>1</th>
@@ -139,6 +138,9 @@
                 <th>10</th>
               </tr>
             </thead>
+        `;
+
+        let body = `
             <tbody>
               <tr>
                 <td>1</td>
@@ -165,6 +167,12 @@
                 <td>Buzz</td>
               </tr>
             </tbody>
+        `;
+
+        let table = `
+          <table>
+            ${header}
+            ${body}
           </table>
         `;
         document.querySelector("#app").innerHTML = table;
