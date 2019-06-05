@@ -115,11 +115,7 @@
       }
 
       function generateList() {
-        let list = [];
-        [...Array(100).keys()].forEach(i => {
-          list.push(fizzBuzz(i + 1));
-        });
-        return list;
+        return [...Array(101).keys()].slice(1).map(i => fizzBuzz(i));
       }
 
       function renderTable() {
