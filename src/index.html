@@ -138,9 +138,8 @@
         `;
 
         let bodyItem = () => {
-          let list = generateList();
           item = "<tr>";
-          list.forEach((v, k) => {
+          generateList().forEach((v, k) => {
             item += `<td>${v}</td>`;
             if ((k + 1) % 10 === 0) item += "</tr><tr>";
           });
@@ -153,13 +152,12 @@
             </tbody>
         `;
 
-        let table = `
+        document.querySelector("#app").innerHTML = `
           <table>
             ${header}
             ${body}
           </table>
         `;
-        document.querySelector("#app").innerHTML = table;
       }
 
       renderTable();
