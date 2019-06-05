@@ -139,12 +139,10 @@
 
         let bodyItem = () => {
           let list = generateList();
-          let item = "<tr>";
-          for (let i = 0; i < 100; i++) {
-            item += `<td>${list[i]}</td>`;
-            if ((i + 1) % 10 === 0) {
-              item += `</tr><tr>`;
-            }
+          item = "<tr>";
+          for ([k, v] of Object.entries(list)) {
+            item += `<td>${v}</td>`;
+            if ((parseInt(k) + 1) % 10 === 0) item += "</tr><tr>";
           }
           return item;
         };
