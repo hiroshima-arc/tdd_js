@@ -124,9 +124,9 @@
       function renderTable() {
         let headerItem = () => {
           let item = "<tr>";
-          for (let i = 1; i <= 10; i++) {
-            item += `<th>${i}</th>`;
-          }
+          [...Array(10).keys()].forEach(i => {
+            item += `<th>${i + 1}</th>`;
+          });
           item += "</tr>";
           return item;
         };
