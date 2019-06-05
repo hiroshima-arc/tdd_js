@@ -116,9 +116,9 @@
 
       function generateList() {
         let list = [];
-        for (let i = 0; i < 100; i++) {
-          list[i] = fizzBuzz(i + 1);
-        }
+        [...Array(100).keys()].forEach(i => {
+          list.push(fizzBuzz(i + 1));
+        });
         return list;
       }
 
