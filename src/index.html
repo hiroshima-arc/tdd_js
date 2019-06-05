@@ -123,20 +123,18 @@
       }
 
       function renderTable() {
+        let headerItem = () => {
+          let item = "<tr>";
+          for (let i = 1; i <= 10; i++) {
+            item += `<th>${i}</th>`;
+          }
+          item += "</tr>";
+          return item;
+        };
+
         let header = `
             <thead>
-              <tr>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>5</th>
-                <th>6</th>
-                <th>7</th>
-                <th>8</th>
-                <th>9</th>
-                <th>10</th>
-              </tr>
+              ${headerItem()}
             </thead>
         `;
 
