@@ -134,6 +134,15 @@
           assert.equal("Fizz", fizzBuzz(3));
         });
       });
+
+      function fizzBuzz(number) {
+        let result = number;
+        if (result % 3 === 0) {
+          result = "Fizz";
+        }
+        return result;
+      }
+
       function print1To100() {
         let list = [];
         for (let i = 0; i < 100; i++) {
