@@ -104,13 +104,11 @@
       });
 
       function fizzBuzz(number) {
-        let result = number;
+        if (number % 15 === 0) return "FizzBuzz";
+        if (number % 3 === 0) return "Fizz";
+        if (number % 5 === 0) return "Buzz";
 
-        if (result % 15 === 0) return "FizzBuzz";
-        if (result % 3 === 0) return "Fizz";
-        if (result % 5 === 0) return "Buzz";
-
-        return result;
+        return number;
       }
 
       function generateList() {
