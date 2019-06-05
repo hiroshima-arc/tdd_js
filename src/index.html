@@ -123,7 +123,7 @@
 
       function renderTable() {
         const header = (() => {
-          let headerItem = () => {
+          const items = () => {
             let item = "<tr>";
             [...Array(10).keys()].forEach(i => {
               item += `<th>${i + 1}</th>`;
@@ -134,14 +134,14 @@
 
           return `
             <thead>
-              ${headerItem()}
+              ${items()}
             </thead>
         `;
         })();
 
         const body = (() => {
-          let bodyItem = () => {
-            item = "<tr>";
+          const items = () => {
+            let item = "<tr>";
             generateList().forEach((v, k) => {
               item += `<td>${v}</td>`;
               if ((k + 1) % 10 === 0) item += "</tr><tr>";
@@ -151,7 +151,7 @@
 
           return `
             <tbody>
-              ${bodyItem()}
+              ${items()}
             </tbody>
         `;
         })();
