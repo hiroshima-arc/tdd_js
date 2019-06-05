@@ -124,13 +124,12 @@
 
       const assert = chai.assert;
       suite("FizzBuzzTest", () => {
-        test("こんにちは世界", () => {
-          assert.equal("hello, world", greeting());
+        test("1から100までをプリントする", () => {
+          assert.equal(1, print1To100());
         });
       });
-
-      function greeting() {
-        return "hello, world";
+      function print1To100() {
+        return 1;
       }
     </script>
 
