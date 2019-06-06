@@ -1,18 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-router.get("/", function (req, res) {
-  res.send({
-    Output: "Hello World!"
-  });
-});
-
-router.post("/", function (req, res) {
-  res.send({
-    Output: "Hello World!"
-  });
-});
-
 router.post("/create", async function (req, res) {
   let message;
 
@@ -22,13 +10,13 @@ router.post("/create", async function (req, res) {
       "Create table. Table description JSON:",
       JSON.stringify(data, null, 2)
     );
-    message = "あいさつテーブルを作成しました";
+    message = "アンケートテーブルを作成しました";
   } catch (err) {
     console.error(
       "Unable to create table. Error JSON:",
       JSON.stringify(err, null, 2)
     );
-    message = "あいさつテーブルを作成できませんでした";
+    message = "アンケートテーブルを作成できませんでした";
   }
 
   res.send({
@@ -45,13 +33,13 @@ router.post("/drop", async function (req, res) {
       "Drop table. Table description JSON:",
       JSON.stringify(data, null, 2)
     );
-    message = "あいさつテーブルを削除しました";
+    message = "アンケートテーブルを削除しました";
   } catch (err) {
     console.error(
       "Unable to drop table. Error JSON:",
       JSON.stringify(err, null, 2)
     );
-    message = "あいさつテーブルを削除できませんでした";
+    message = "アンケートテーブルを削除できませんでした";
   }
 
   res.send({
@@ -64,18 +52,18 @@ router.post("/save", async function (req, res) {
 
   try {
     const info = params(req);
-    const data = await service.saveHelloInfo(info);
+    const data = await service.saveInfo(info);
     console.log(
       "Save table. Table description JSON:",
       JSON.stringify(data, null, 2)
     );
-    message = "あいさつを送信しました";
+    message = "アンケートを送信しました";
   } catch (err) {
     console.error(
       "Unable to save table. Error JSON:",
       JSON.stringify(err, null, 2)
     );
-    message = "あいさつを送信できませんでした";
+    message = "アンケートを送信できませんでした";
   }
 
   res.send({
@@ -85,12 +73,11 @@ router.post("/save", async function (req, res) {
 
 router.get('/all', async (req, res) => {
   let data = {Items: []};
-  let message ='';
   try {
     data = await service.getAllContact();
   } catch (err) {
     console.error("Unable to get. Error JSON:", JSON.stringify(err, null, 2));
-    data = 'あいさつ一覧を取得できませんでした';
+    data = 'アンケート一覧を取得できませんでした';
   }
   res.send({
     Data: data
@@ -99,13 +86,19 @@ router.get('/all', async (req, res) => {
 
 const params = req => {
   return {
-    name: req.body.name
+    name: req.body.name,
+    gender: req.body.gender,
+    job: req.body.job,
+    impression: req.body.impression,
+    trigger: req.body.trigger,
+    nextevent: req.body.nextevent,
+    message: req.body.message
   };
 };
 
 module.exports = router;
 
-const name = "Hello";
+const name = "Survey";
 const v4 = require("uuid/v4");
 
 const model = {
@@ -130,7 +123,13 @@ const model = {
       TableName: name,
       Item: {
         id: v4(),
-        name: info.name
+        name: info.name,
+        gender: info.gender,
+        job: info.job,
+        impression: info.impression,
+        trigger: info.trigger,
+        nextevent: info.nextevent,
+        message: info.message
       }
     }
   },
@@ -145,7 +144,7 @@ const service = {
     await repository.drop(model);
   },
 
-  saveHelloInfo: async info => {
+  saveInfo: async info => {
     return await repository.save(model,info);
   },
 

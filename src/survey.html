@@ -69,9 +69,10 @@
             <fieldset>
               <p class="fizz-buzz-component __form __input">
                 イベント名：<input
+                  id="name"
                   type="text"
-                  size="20"
-                  name="inputText"
+                  size="30"
+                  name="name"
                   textinput=""
                   class="--text"
                   value="広島フロントエンド勉強会 Vol.26"
@@ -83,27 +84,27 @@
                 性別：
                 <input
                   type="radio"
-                  name="inputRadio1"
-                  id="inputRadio1-1"
+                  name="gender"
+                  id="gender1"
                   value="男性"
                   raidoinput="3"
-                /><label for="inputRadio1-1">男性</label>
+                /><label for="gender1">男性</label>
                 <input
                   type="radio"
-                  name="inputRadio1"
-                  id="inputRadio1-2"
+                  name="gender"
+                  id="gender2"
                   value="女性"
                   raidoinput="3"
-                /><label for="inputRadio1-2">女性</label>
+                /><label for="gender2">女性</label>
                 <input
                   type="radio"
-                  name="inputRadio1"
-                  id="inputRadio1-3"
-                  value="5"
-                /><label for="inputRadio1-3">その他</label>
+                  name="gender"
+                  id="gender3"
+                  value="その他"
+                /><label for="gender3">その他</label>
               </p>
               <p class="fizz-buzz-component __form __select">
-                職業：<select size="1" name="selectbox1"
+                職業：<select size="1" name="job"
                   ><option value="0"> </option
                   ><option value="学生"> 学生 </option
                   ><option value="社会人"> 社会人 </option
@@ -115,22 +116,22 @@
                 内容：
                 <input
                   type="radio"
-                  name="inputRadio2"
-                  id="inputRadio2-1"
+                  name="impression"
+                  id="impression1"
                   value="良い"
                   raidoinput="3"
                 /><label for="inputRadio2-1">良かった</label>
                 <input
                   type="radio"
-                  name="inputRadio2"
-                  id="inputRadio2-2"
+                  name="impression"
+                  id="impression2"
                   value="普通"
                   raidoinput="3"
                 /><label for="inputRadio2-2">普通</label>
                 <input
                   type="radio"
-                  name="inputRadio2"
-                  id="inputRadio2-3"
+                  name="impression"
+                  id="impression3"
                   value="悪い"
                 /><label for="inputRadio2-3">悪かった</label>
               </p>
@@ -138,33 +139,33 @@
                 きっかけ：
                 <input
                   type="checkbox"
-                  name="inputCheck1"
-                  id="inputCheck1-1"
+                  name="trigger"
+                  id="trigger1"
                   value="SNS"
                 /><label for="inputCheck1-1">SNS</label>
                 <input
                   type="checkbox"
-                  name="inputCheck1"
-                  id="inputCheck1-2"
+                  name="trigger"
+                  id="trigger2"
                   value="検索エンジン"
                 /><label for="inputCheck1-2">検索エンジン</label>
                 <input
                   type="checkbox"
-                  name="inputCheck1"
-                  id="inputCheck1-3"
+                  name="trigger"
+                  id="trigger3"
                   value="口コミ"
                 /><label for="inputCheck1-3">口コミ</label>
                 <input
                   type="checkbox"
-                  name="inputCheck1"
-                  id="inputCheck1-4"
+                  name="trigger"
+                  id="trigger4"
                   value="その他"
                 /><label for="inputCheck1-4">その他</label>
               </p>
               <p class="fizz-buzz-component __form __select">
                 実施されるなら参加したいイベント：<select
                   size="1"
-                  name="selectbox"
+                  name="nextevent"
                   ><option value="0"> </option
                   ><option value="PHPから始めるテスト駆動開発">
                     PHPから始めるテスト駆動開発 </option
@@ -183,13 +184,13 @@
                   その他ご意見・ご要望：<textarea
                     rows="4"
                     cols="40"
-                    name="textarea"
+                    name="message"
                     class="__input--text-area"
                   ></textarea>
                 </p>
               </div>
               <p>
-                送信ボタン：<button type="submit" name="buttonSubmit">
+                <button type="submit" name="buttonSubmit">
                   送信
                 </button>
               </p>
