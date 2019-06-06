@@ -4,7 +4,9 @@
   "private": true,
   "config": {
     "s3_bucket": "tdd-js-serverless",
-    "stack_name": "tdd-js-api"
+    "stack_name": "tdd-js-api",
+    "local_network": "lambda-local",
+    "local_db": "dynamodb"
   },
   "scripts": {
     "start": "PORT=4000 nodemon --inspect bin/www",
@@ -18,7 +20,17 @@
     "sam:deploy": "sam deploy --template-file .aws-sam/build/packaged.yaml --stack-name $npm_package_config_stack_name --capabilities CAPABILITY_IAM --parameter-overrides ENV=production",
     "sam:describe": "aws cloudformation describe-stacks --stack-name $npm_package_config_stack_name",
     "sam:release": "npm-run-all build sam:package sam:deploy sam:describe",
-    "sam:destroy": "aws cloudformation delete-stack --stack-name $npm_package_config_stack_name"
+    "sam:destroy": "aws cloudformation delete-stack --stack-name $npm_package_config_stack_name",
+    "db:setup": "npm-run-all db:setup:*",
+    "db:setup:network": "docker network create $npm_package_config_local_network",
+    "db:setup:db": "docker run -d -v $PWD:/dynamodb_local_db -p 8000:8000 --network $npm_package_config_local_network --name $npm_package_config_local_db instructure/dynamo-local-admin",
+    "db:destroy": "npm-run-all db:destroy:db db:destroy:network",
+    "db:destroy:network": "docker network rm $npm_package_config_local_network",
+    "db:destroy:db": "docker rm -f $npm_package_config_local_db",
+    "db:start": "docker start $npm_package_config_local_db",
+    "db:stop": "docker stop $npm_package_config_local_db",
+    "db:show": "open http://127.0.0.1:8000",
+    "db:restart": "npm-run-all db:stop db:start"
   },
   "dependencies": {
     "aws-sdk": "^2.469.0",
