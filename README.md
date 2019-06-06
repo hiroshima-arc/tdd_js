@@ -33,6 +33,17 @@ npx eslint --init
 touch Procfile
 ```
 
+#### アプリケーションのセットアップ
+
+```bash
+mkdir src
+touch src/index.html
+npm install express-generator -g
+express --no-view api
+cd api
+npm install
+```
+
 **[⬆ back to top](#構成)**
 
 ### 配置
