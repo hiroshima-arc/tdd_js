@@ -1,0 +1,87 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  api
+
+  Sample SAM Template for api
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Parameters:
+  Stage:
+    Type: String
+    Description: Application deployment stage
+    Default: ''
+  ApiUrl:
+    Type: String
+    Description: Default api url
+    Default: 'https://api.hiroshima-arc.org'
+
+Resources:
+  ExpressFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: TDDJSExpressApp
+      Handler: lambda.handler
+      Runtime: nodejs10.x
+      Environment:
+        Variables:
+          NODE_ENV: production
+          API_URL: !Ref ApiUrl
+      Policies:
+        - AmazonDynamoDBFullAccess
+      CodeUri: ./
+      MemorySize: 512
+      Timeout: 30
+      Events:
+        ExpressApi:
+          Type: Api
+          Properties:
+            Path: /
+            Method: ANY
+            RestApiId: !Ref ExpressAPI
+  ExpressAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: TDDJSExpressAPI
+      StageName: Prod
+      DefinitionBody:
+        swagger: '2.0'
+        basePath: '/Prod'
+        info:
+          title: !Ref AWS::StackName
+        paths:
+          /{proxy+}:
+            x-amazon-apigateway-any-method:
+              responses: {}
+              x-amazon-apigateway-integration:
+                uri:
+                  !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ExpressFunction.Arn}/invocations'
+                passthroughBehavior: "when_no_match"
+                httpMethod: POST
+                type: "aws_proxy"
+          /:
+            get:
+              responses: {}
+              x-amazon-apigateway-integration:
+                uri:
+                  !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ExpressFunction.Arn}/invocations'
+                passthroughBehavior: "when_no_match"
+                httpMethod: POST
+                type: "aws_proxy"
+  ConfigLambdaPermission:
+    Type: "AWS::Lambda::Permission"
+    DependsOn:
+      - ExpressFunction
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref ExpressFunction
+      Principal: apigateway.amazonaws.com
+
+Outputs:
+  ExpressAppUrl:
+    Description: App endpoint URL
+    Value: !Sub "https://${ExpressAPI}.execute-api.${AWS::Region}.amazonaws.com/Prod/"

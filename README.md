@@ -42,15 +42,25 @@ npm install express-generator -g
 express --no-view api
 cd api
 npm install
+npm install --save-dev npm-run-all watch foreman cpx rimraf
+npm install aws-serverless-express aws-sdk --save
 ```
 
 **[⬆ back to top](#構成)**
 
 ### 配置
 
+```bash
+npm run build
+```
+
 **[⬆ back to top](#構成)**
 
 ### 運用
+
+```bash
+npm run sam:release
+```
 
 **[⬆ back to top](#構成)**
 

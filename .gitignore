@@ -63,3 +63,4 @@ typings/
 .idea
 tdd_js.iml
 readme.html
+.aws-sam

@@ -2,13 +2,36 @@
   "name": "api",
   "version": "0.0.0",
   "private": true,
+  "config": {
+    "s3_bucket": "tdd-js-serverless",
+    "stack_name": "tdd-js-api"
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "build": "npm-run-all sam:build",
+    "aws:s3:create": "aws s3 mb s3://$npm_package_config_s3_bucket",
+    "aws:s3:destroy": "aws s3 rb s3://$npm_package_config_s3_bucket --force",
+    "sam:build": "sam build",
+    "sam:local": "sam local start-api --host 0.0.0.0 --port 5000",
+    "sam:package": "sam package --template-file .aws-sam/build/template.yaml --s3-bucket $npm_package_config_s3_bucket --output-template-file .aws-sam/build/packaged.yaml",
+    "sam:deploy": "sam deploy --template-file .aws-sam/build/packaged.yaml --stack-name $npm_package_config_stack_name --capabilities CAPABILITY_IAM --parameter-overrides ENV=production",
+    "sam:describe": "aws cloudformation describe-stacks --stack-name $npm_package_config_stack_name",
+    "sam:release": "npm-run-all build sam:package sam:deploy sam:describe",
+    "sam:destroy": "aws cloudformation delete-stack --stack-name $npm_package_config_stack_name"
   },
   "dependencies": {
+    "aws-sdk": "^2.469.0",
+    "aws-serverless-express": "^3.3.6",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "^4.16.4",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "foreman": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3",
+    "watch": "^1.0.2"
   }
 }
