@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <title>Re:ゼロから始めるテスト駆動開発</title>
+    <link
+      href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css"
+      rel="stylesheet"
+    />
+
+    <style type="text/css">
+      body {
+        width: 810px;
+        margin: 0 auto;
+        background-color: ivory;
+      }
+      header {
+        width: 350px;
+      }
+      .nav-component {
+        width: 290px;
+        float: left;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+      .fizz-buzz-component {
+        width: 500px;
+        float: right;
+        padding-left: 5px;
+        padding-bottom: 10px;
+        margin-bottom: 5px;
+      }
+      .fizz-buzz-component table {
+        margin-top: 10px;
+        border-collapse: collapse;
+      }
+      .fizz-buzz-component th {
+        border: 1px solid black;
+        background-color: aqua;
+      }
+      .fizz-buzz-component td {
+        border: 1px solid black;
+      }
+      footer {
+        clear: both;
+        width: auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HTML5+CSS+JavaScript with TDD</h1>
+    <header>
+      <nav class="nav-component">
+        <h1>Menu</h1>
+        <ul>
+          <li><a href="readme.html" target="_blank">README</a></li>
+          <li><a href="index.html">FizzBuzz</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <section class="fizz-buzz-component">
+        <h2>アンケート</h2>
+        <div id="app">
+          <form name="fizzBuzzForm" class="__form">
+            <fieldset>
+              <p class="fizz-buzz-component __form __input">
+                イベント名：<input
+                  type="text"
+                  size="20"
+                  name="inputText"
+                  textinput=""
+                  class="--text"
+                  value="広島フロントエンド勉強会 Vol.26"
+                  readonly
+                />
+                <label class="--label"></label>
+              </p>
+              <p class="fizz-buzz-component __form __radio">
+                性別：
+                <input
+                  type="radio"
+                  name="inputRadio1"
+                  id="inputRadio1-1"
+                  value="男性"
+                  raidoinput="3"
+                /><label for="inputRadio1-1">男性</label>
+                <input
+                  type="radio"
+                  name="inputRadio1"
+                  id="inputRadio1-2"
+                  value="女性"
+                  raidoinput="3"
+                /><label for="inputRadio1-2">女性</label>
+                <input
+                  type="radio"
+                  name="inputRadio1"
+                  id="inputRadio1-3"
+                  value="5"
+                /><label for="inputRadio1-3">その他</label>
+              </p>
+              <p class="fizz-buzz-component __form __select">
+                職業：<select size="1" name="selectbox1"
+                  ><option value="0"> </option
+                  ><option value="学生"> 学生 </option
+                  ><option value="社会人"> 社会人 </option
+                  ><option value="その他"> その他 </option>
+                </select>
+              </p>
+
+              <p class="fizz-buzz-component __form __radio">
+                内容：
+                <input
+                  type="radio"
+                  name="inputRadio2"
+                  id="inputRadio2-1"
+                  value="良い"
+                  raidoinput="3"
+                /><label for="inputRadio2-1">良かった</label>
+                <input
+                  type="radio"
+                  name="inputRadio2"
+                  id="inputRadio2-2"
+                  value="普通"
+                  raidoinput="3"
+                /><label for="inputRadio2-2">普通</label>
+                <input
+                  type="radio"
+                  name="inputRadio2"
+                  id="inputRadio2-3"
+                  value="悪い"
+                /><label for="inputRadio2-3">悪かった</label>
+              </p>
+              <p class="fizz-buzz-component __form __check-box">
+                きっかけ：
+                <input
+                  type="checkbox"
+                  name="inputCheck1"
+                  id="inputCheck1-1"
+                  value="SNS"
+                /><label for="inputCheck1-1">SNS</label>
+                <input
+                  type="checkbox"
+                  name="inputCheck1"
+                  id="inputCheck1-2"
+                  value="検索エンジン"
+                /><label for="inputCheck1-2">検索エンジン</label>
+                <input
+                  type="checkbox"
+                  name="inputCheck1"
+                  id="inputCheck1-3"
+                  value="口コミ"
+                /><label for="inputCheck1-3">口コミ</label>
+                <input
+                  type="checkbox"
+                  name="inputCheck1"
+                  id="inputCheck1-4"
+                  value="その他"
+                /><label for="inputCheck1-4">その他</label>
+              </p>
+              <p class="fizz-buzz-component __form __select">
+                実施されるなら参加したいイベント：<select
+                  size="1"
+                  name="selectbox"
+                  ><option value="0"> </option
+                  ><option value="PHPから始めるテスト駆動開発">
+                    PHPから始めるテスト駆動開発 </option
+                  ><option value="APIサービスと連携するフロントエンド開発">
+                    APIサービスと連携するフロントエンド開発</option
+                  ><option value="AWSから始めるフロントエンド開発">
+                    AWSから始めるフロントエンド開発 </option
+                  ><option value="JavaScriptから始めるオブジェクト指向">
+                    JavaScriptから始めるオブジェクト指向
+                  </option></select
+                >
+                <label class="--label"></label>
+              </p>
+              <div>
+                <p class="fizz-buzz-component __form __text-area">
+                  その他ご意見・ご要望：<textarea
+                    rows="4"
+                    cols="40"
+                    name="textarea"
+                    class="__input--text-area"
+                  ></textarea>
+                </p>
+              </div>
+              <p>
+                送信ボタン：<button type="submit" name="buttonSubmit">
+                  送信
+                </button>
+              </p>
+            </fieldset>
+          </form>
+        </div>
+        <div id="mocha"></div>
+      </section>
+    </section>
+    <footer>
+      <p>Copyright</p>
+      <address>hiroshima.arc@gmail.com</address>
+    </footer>
+
+    <script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
+    <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+    <script>
+      mocha.setup("tdd");
+    </script>
+
+    <script>
+      mocha.checkLeaks();
+      mocha.globals(["jQuery"]);
+      mocha.run();
+    </script>
+  </body>
+</html>
