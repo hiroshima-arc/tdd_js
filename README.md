@@ -42,8 +42,9 @@ npm install express-generator -g
 express --no-view api
 cd api
 npm install
-npm install --save-dev npm-run-all watch foreman cpx rimraf
+npm install --save-dev npm-run-all watch foreman cpx rimraf nodemon
 npm install aws-serverless-express aws-sdk --save
+npm install --save-dev mocha chai supertest unit.js aws-sdk-mock
 ```
 
 **[⬆ back to top](#構成)**

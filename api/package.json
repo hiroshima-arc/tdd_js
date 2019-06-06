@@ -7,8 +7,9 @@
     "stack_name": "tdd-js-api"
   },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "PORT=4000 nodemon --inspect bin/www",
     "build": "npm-run-all sam:build",
+    "test": "mocha tests/**",
     "aws:s3:create": "aws s3 mb s3://$npm_package_config_s3_bucket",
     "aws:s3:destroy": "aws s3 rb s3://$npm_package_config_s3_bucket --force",
     "sam:build": "sam build",
@@ -28,10 +29,16 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "aws-sdk-mock": "^4.4.0",
+    "chai": "^4.2.0",
     "cpx": "^1.5.0",
     "foreman": "^3.0.1",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
     "npm-run-all": "^4.1.5",
     "rimraf": "^2.6.3",
+    "supertest": "^4.0.2",
+    "unit.js": "^2.1.0",
     "watch": "^1.0.2"
   }
 }
