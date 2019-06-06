@@ -52,6 +52,7 @@ router.post("/save", async function (req, res) {
 
   try {
     const info = params(req);
+    console.log(info);
     const data = await service.saveInfo(info);
     console.log(
       "Save table. Table description JSON:",

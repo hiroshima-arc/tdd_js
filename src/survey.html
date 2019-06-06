@@ -65,7 +65,12 @@
       <section class="fizz-buzz-component">
         <h2>アンケート</h2>
         <div id="app">
-          <form name="fizzBuzzForm" class="__form">
+          <form
+            name="fizzBuzzForm"
+            class="__form"
+            method="POST"
+            action="http://localhost:4000/api/survey/save"
+          >
             <fieldset>
               <p class="fizz-buzz-component __form __input">
                 イベント名：<input
@@ -190,7 +195,11 @@
                 </p>
               </div>
               <p>
-                <button type="submit" name="buttonSubmit">
+                <button
+                  type="button"
+                  name="buttonSubmit"
+                  onclick="sendSurvey()"
+                >
                   送信
                 </button>
               </p>
@@ -210,6 +219,87 @@
     <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
     <script>
       mocha.setup("tdd");
+
+      const surveyData = () => {
+        const genders = document.getElementsByName("gender");
+        let gender;
+        for (let i = 0; i < genders.length; i++) {
+          if (genders[i].checked) {
+            gender = genders[i].value;
+            break;
+          }
+        }
+
+        const impressions = document.getElementsByName("impression");
+        let impression;
+        for (let i = 0; i < impressions.length; i++) {
+          if (impressions[i].checked) {
+            impression = impressions[i].value;
+            break;
+          }
+        }
+
+        const triggers = document.getElementsByName("trigger");
+        let trigger = [];
+        for (let i = 0; i < triggers.length; i++) {
+          if (triggers[i].checked) {
+            trigger.push(triggers[i].value);
+          }
+        }
+
+        let message = document.querySelector(
+          "#app > form > fieldset > div > p > textarea"
+        ).value;
+
+        if (message === "") message = " ";
+
+        return {
+          name: document.querySelector("#name").value,
+          gender: gender,
+          job: document.querySelector(
+            "#app > form > fieldset > p:nth-child(3) > select"
+          ).value,
+          impression: impression,
+          trigger: trigger,
+          nextevent: document.querySelector(
+            "#app > form > fieldset > p:nth-child(6) > select"
+          ).value,
+          message: message
+        };
+      };
+
+      function sendSurvey() {
+        const apiUrl = "http://localhost:4000";
+
+        const success = data => {
+          console.log(data);
+        };
+        const errors = data => {
+          console.log(data);
+        };
+
+        apiCall(`${apiUrl}/api/survey/save`, "POST", success, errors);
+      }
+
+      function apiCall(url, method, onSuccess, onErrors) {
+        console.log(surveyData());
+        $("#app__message").html("処理中...");
+        $.ajax({
+          url: url,
+          type: method,
+          data: surveyData()
+        })
+          .done(data => {
+            onSuccess(data);
+            const message = `<h3>Apiサーバーの読み込みに成功しました</h3>`;
+            $("#app__message").html(message);
+          })
+          .fail(data => {
+            onErrors(data);
+            const message = `<h3>Apiサーバーでエラーが発生しました</h3>`;
+            $("#app__message").html(message);
+          });
+      }
     </script>
 
     <script>
