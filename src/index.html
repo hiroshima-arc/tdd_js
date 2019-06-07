@@ -124,9 +124,9 @@
       function renderTable() {
         let headerItem = () => {
           let item = "<tr>";
-          for (let i = 1; i <= 10; i++) {
-            item += `<th>${i}</th>`;
-          }
+          [...Array(10).keys()].forEach(i => {
+            item += `<th>${i + 1}</th>`;
+          });
           item += `</tr>`;
           return item;
         };
@@ -140,12 +140,12 @@
         let bodyItem = () => {
           let list = generateList();
           let item = "<tr>";
-          for (let [k, v] of Object.entries(list)) {
+          list.forEach((v, k) => {
             item += `<td>${v}</td>`;
-            if ((parseInt(k) + 1) % 10 === 0) {
+            if ((k + 1) % 10 === 0) {
               item += `</tr>`;
             }
-          }
+          });
           return item;
         };
 
