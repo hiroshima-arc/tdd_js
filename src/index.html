@@ -103,6 +103,8 @@
         });
       });
 
+      const MAX_NUMBER = 100;
+
       function fizzBuzz(number) {
         const isFizz = number % 3 === 0;
         const isBuzz = number % 5 === 0;
@@ -115,7 +117,8 @@
       }
 
       function generateList() {
-        return [...Array(101).keys()].slice(1).map(fizzBuzz);
+        // 配列が0から始まるので１をたさないと99までしか表示されない
+        return [...Array(MAX_NUMBER + 1).keys()].slice(1).map(fizzBuzz);
       }
 
       function renderTable() {
