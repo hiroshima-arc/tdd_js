@@ -125,13 +125,18 @@
       const assert = chai.assert;
       suite("FizzBuzzTest", () => {
         test("1から100までをプリントする", () => {
-          assert.equal(1, print1To100());
-          assert.equal(100, print1To100());
+          let list = print1To100();
+          assert.equal(1, list[0]);
+          assert.equal(100, list[99]);
         });
       });
 
       function print1To100() {
-        return 1;
+        let list = [];
+        for (let i = 0; i < 100; i++) {
+          list[i] = i + 1;
+        }
+        return list;
       }
     </script>
 
