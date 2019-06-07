@@ -64,50 +64,7 @@
     <section>
       <section class="fizz-buzz-component">
         <h2>FizzBuzz</h2>
-        <div id="app">
-          <table>
-            <thead>
-              <tr>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>5</th>
-                <th>6</th>
-                <th>7</th>
-                <th>8</th>
-                <th>9</th>
-                <th>10</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>Fizz</td>
-                <td>4</td>
-                <td>Buzz</td>
-                <td>Fizz</td>
-                <td>7</td>
-                <td>8</td>
-                <td>Fizz</td>
-                <td>Buzz</td>
-              </tr>
-              <tr>
-                <td>11</td>
-                <td>Fizz</td>
-                <td>13</td>
-                <td>14</td>
-                <td>FizzBuzz</td>
-                <td>16</td>
-                <td>17</td>
-                <td>Fizz</td>
-                <td>19</td>
-                <td>Buzz</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div id="app"></div>
         <div id="mocha"></div>
       </section>
     </section>
@@ -124,10 +81,13 @@
 
       const assert = chai.assert;
       suite("FizzBuzzTest", () => {
-        test("1から100までをプリントする", () => {
+        test("1から100までをプリントする,ただし3で割り切れる場合はFizz5で割り切れる場合はBuzz15で割り切れる場合はBuzzをプリントする", () => {
           let list = print1To100();
           assert.equal(1, list[0]);
-          assert.equal(100, list[99]);
+          assert.equal("Fizz", list[2]);
+          assert.equal("Buzz", list[4]);
+          assert.equal("FizzBuzz", list[14]);
+          assert.equal("Buzz", list[99]);
         });
 
         test("3で割り切れる場合はFizzをプリントする", () => {
@@ -160,10 +120,56 @@
       function print1To100() {
         let list = [];
         for (let i = 0; i < 100; i++) {
-          list[i] = i + 1;
+          list[i] = fizzBuzz(i + 1);
         }
         return list;
       }
+
+      function renderTable() {
+        let headerItem = () => {
+          let item = "<tr>";
+          for (let i = 1; i <= 10; i++) {
+            item += `<th>${i}</th>`;
+          }
+          item += `</tr>`;
+          return item;
+        };
+
+        let header = `
+            <thead>
+            ${headerItem()}
+            </thead>
+        `;
+
+        let bodyItem = () => {
+          let list = print1To100();
+          let item = "<tr>";
+          for (let i = 0; i < 100; i++) {
+            item += `<td>${list[i]}</td>`;
+            if ((i + 1) % 10 === 0) {
+              item += `</tr>`;
+            }
+          }
+          item += "</tr>";
+          return item;
+        };
+
+        let body = `
+            <tbody>
+            ${bodyItem()}
+            </tbody>
+        `;
+        let table = `
+          <table>
+          ${header}
+          ${body}
+          </table>
+        `;
+
+        document.querySelector("#app").innerHTML = table;
+      }
+
+      renderTable();
     </script>
 
     <script>
