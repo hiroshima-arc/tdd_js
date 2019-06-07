@@ -143,10 +143,10 @@
           const bodyItem = () => {
             let item = "<tr>";
             generateList().forEach((v, k) => {
-              item += `<td>${v}</td>`;
-              if ((k + 1) % 10 === 0) {
-                item += `</tr>`;
-              }
+              const isNextLine = (k + 1) % 10 === 0;
+              isNextLine
+                ? (item += `<td>${v}</td></tr><tr>`)
+                : (item += `<td>${v}</td>`);
             });
             return item;
           };
