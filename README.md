@@ -52,6 +52,17 @@ Webpackセットアップ
 npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/register @babel/polyfill babel-plugin-istanbul cross-env nyc webpack webpack-cli webpack-dev-server babel-loader css-loader html-webpack-plugin mini-css-extract-plugin copy-webpack-plugin clean-webpack-plugin                                                                                                                                                                                                                                                                 
 ```
 
+AWS Amplifyのセットアップ
+```bash
+npm install -g @aws-amplify/cli
+amplify configure
+npm install --save-dev @aws-amplify/cli aws-amplify
+amplify init
+amplify add hosting
+amplify publish
+amplify status
+```
+
 **[⬆ back to top](#構成)**
 
 ### 配置

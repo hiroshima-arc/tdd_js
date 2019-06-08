@@ -16,7 +16,9 @@
     "watch:webpack": "webpack --watch",
     "app": "npm-run-all app:*",
     "app:frontend": "browser-sync start --config bs-config.js",
-    "app:webpack": "webpack-dev-server --hot --inline --config webpack.dev.js"
+    "app:webpack": "webpack-dev-server --hot --inline --config webpack.dev.js",
+    "aws:amplify:publish": "amplify publish",
+    "aws:amplify:status": "amplify status"
   },
   "repository": {
     "type": "git",
@@ -30,11 +32,13 @@
   },
   "homepage": "https://github.com/hiroshima-arc/tdd_js#readme",
   "devDependencies": {
+    "@aws-amplify/cli": "^1.7.1",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
+    "aws-amplify": "^1.1.28",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-istanbul": "^5.1.4",

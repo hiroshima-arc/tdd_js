@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "tddjs-dev-20190608130229-authRole",
+            "UnauthRoleArn": "arn:aws:iam::411087959999:role/tddjs-dev-20190608130229-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::411087959999:role/tddjs-dev-20190608130229-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "tddjs-dev-20190608130229-deployment",
+            "UnauthRoleName": "tddjs-dev-20190608130229-unauthRole",
+            "StackName": "tddjs-dev-20190608130229",
+            "StackId": "arn:aws:cloudformation:us-east-1:411087959999:stack/tddjs-dev-20190608130229/3cd378b0-89a2-11e9-8947-0e0c84e5bae6"
+        }
+    }
+}
