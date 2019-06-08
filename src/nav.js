@@ -36,7 +36,24 @@ export const view = {
                   >
                 </div>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link">セッション</a></li>
+            <ul class="navbar-nav mr-auto">
+                         <li class="nav-item dropdown">
+                <a
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  href="#"
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  id="navbarDropdown"
+                  role="button"
+                >
+                 セッション 
+                </a>
+                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                  <a href="#" id="session" class="dropdown-item" 
+                    >セッション</a
+                  ></div>
+              </li>
               <li class="nav-item"><a href="#" class="nav-link" id="survey">アンケート</a></li>
            </ul>
           </div>
