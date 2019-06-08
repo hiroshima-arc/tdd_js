@@ -65,3 +65,7 @@ tdd_js.iml
 readme.html
 
 docs/PITCHME
+amplify
+.aws-sam
+aws-exports.js
+dist
