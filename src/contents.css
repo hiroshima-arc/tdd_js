@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/* ページリンクの位置調整 */
+section {
+  margin-top: -60px;
+  padding-top: 60px;
+}
+
+/* ------------ A Style */
+a:link {
+  text-decoration: none;
+  color: #0c0c0c;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #0c0c0c;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #0000bf;
+}
+
+a:active {
+  text-decoration: none;
+  color: #0c0c0c;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: 0.5em;
+}
