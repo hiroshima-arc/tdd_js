@@ -64,3 +64,5 @@ typings/
 tdd_js.iml
 readme.html
 .aws-sam
+docs/PITCHME
+dist
