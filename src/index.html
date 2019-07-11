@@ -101,6 +101,33 @@
         test("15で割り切れる場合はFizzBuzzをプリントする", () => {
           assert.equal("FizzBuzz", fizzBuzz(15));
         });
+
+        test("数字の合計は2632", () => {
+          const list = generateList();
+          const result = list
+            .filter(i => !isNaN(i))
+            .map(i => i)
+            .reduce((a, b) => a + b);
+          assert.equal(2632, result);
+        });
+
+        test("Fizzの合計数は27", () => {
+          const list = generateList();
+          const result = list.filter(i => i === "Fizz").map(i => i).length;
+          assert.equal(27, result);
+        });
+
+        test("Buzzの合計数は14", () => {
+          const list = generateList();
+          const result = list.filter(i => i === "Buzz").map(i => i).length;
+          assert.equal(14, result);
+        });
+
+        test("FizzBuzzの合計数は6", () => {
+          const list = generateList();
+          const result = list.filter(i => i === "FizzBuzz").map(i => i).length;
+          assert.equal(6, result);
+        });
       });
 
       const MAX_NUMBER = 100;
