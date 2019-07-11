@@ -69,3 +69,5 @@ amplify
 .aws-sam
 aws-exports.js
 dist
+.DS_store
+.vscode
