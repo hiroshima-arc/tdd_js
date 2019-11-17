@@ -19,10 +19,16 @@
 npm install
 ```
 
+![](./docs/images/20191117001.png)
+
 #### パッケージのインストールが終わったらsrcフォルダにあるindex.htmlファイルを開いて画面右上にあるOpen Preview to the Sideボタンを押してプレビュー画面を開く
+
+![](./docs/images/20191117002.png)
+![](./docs/images/20191117003.png)
 
 #### `<script>`タグ内のJavaScriptコードを編集して開発を進める
 
+![](./docs/images/20191117004.png)
 
 **[⬆ back to top](#構成)**
 
