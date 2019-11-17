@@ -1,203 +1,193 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
-    <title>Re:ゼロから始めるテスト駆動開発</title>
-    <link
-      href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css"
-      rel="stylesheet"
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <style type="text/css">
-      body {
-        width: 810px;
-        margin: 0 auto;
-        background-color: ivory;
-      }
-      header {
-        width: 350px;
-      }
-      .nav-component {
-        width: 290px;
-        float: left;
-        padding: 5px;
-        margin-bottom: 5px;
-      }
-      .fizz-buzz-component {
-        width: 500px;
-        float: right;
-        padding-left: 5px;
-        padding-bottom: 10px;
-        margin-bottom: 5px;
-      }
-      .fizz-buzz-component table {
-        margin-top: 10px;
-        border-collapse: collapse;
-      }
-      .fizz-buzz-component th {
-        border: 1px solid black;
-        background-color: aqua;
-      }
-      .fizz-buzz-component td {
-        border: 1px solid black;
-      }
-      footer {
-        clear: both;
-        width: auto;
-        text-align: center;
-      }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>テスト駆動開発から始めるJavaScript入門</title>
   </head>
   <body>
-    <h1>HTML5+CSS+JavaScript with TDD</h1>
-    <header>
-      <nav class="nav-component">
-        <h1>Menu</h1>
-        <ul>
-          <li><a href="readme.html" target="_blank">README</a></li>
-          <li><a href="index.html">FizzBuzz</a></li>
+    <!-- ヘッダー -->
+    <header class="py-4"></header>
+    <!-- /ヘッダー -->
+    <div class="container text-center">
+      <h1>テスト駆動開発から始めるJavaScript入門</h1>
+    </div>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark stick-top">
+      <!-- サブコンポーネント -->
+      <div class="container">
+        <a href="index.html" class="navbar-brand">TDDJavaScript</a>
+        <!-- 切り替えボタン -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbar-content"
+          aria-controls="navbar-content"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- ナビゲーション -->
+        <div class="collapse navbar-collapse" id="navbar-content">
+          <!-- ナビゲーションメニュー -->
+          <!-- 左側メニュー: トップページの各コンテンツへのリンク -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a href="#" class="nav-link"
+                >Top <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-hhaspopup="true"
+                aria-expanded="false"
+              >
+                Contents
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a href="#" class="dropdown-item">FizzBuzz</a>
+              </div>
+            </li>
+          </ul>
+          <!-- /ナビゲーションメニュー -->
+        </div>
+      </div>
+      <!-- サブコンポーネント -->
+    </nav>
+    <!-- /ナビゲーションバー -->
+    <!-- メイン -->
+    <main>
+      <!-- コンテンツ01 -->
+      <div class="py-4">
+        <section id="fizz-buzz">
+          <div class="container">
+            <div class="row">
+              <h2>FizzBuzz</h2>
+            </div>
+            <div class="row p-3">
+              <!-- 左側カラム（画面幅md以上）　-->
+              <div class="col-md-2">
+                <h3>仕様</h3>
+              </div>
+              <!-- 右側カラム（画面幅md以上） -->
+              <div class="col-md-10">
+                <p>1 から 100 までの数をプリントするプログラムを書け。</p>
+                <p>
+                  ただし 3 の倍数のときは数の代わりに｢Fizz｣と、5
+                  の倍数のときは｢Buzz｣とプリントし、
+                </p>
+                <p>3 と 5 両方の倍数の場合には｢FizzBuzz｣とプリントすること</p>
+              </div>
+            </div>
+            <div class="row p-3">
+              <!-- 左側カラム（画面幅md以上）　-->
+              <div class="col-md-2">
+                <h3>ToDoリスト</h3>
+              </div>
+              <!-- 右側カラム（画面幅md以上） -->
+              <div class="col-md-10">
+                <ul>
+                  <li>数を文字列にして返す</li>
+                  <li>
+                    3
+                    の倍数のときは数の代わりに｢Fizz｣と返す
+                  </li>
+                  <li>5 の倍数のときは｢Buzz｣と返す</li>
+                  <li>
+                    3 と 5
+                    両方の倍数の場合には｢FizzBuzz｣と返す
+                  </li>
+                  <li>1 から 100 まで数を返す</li>
+                  <li>プリントする</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="mocha"></section>
+      </div>
+      <!-- /コンテンツ01 -->
+    </main>
+    <!-- /メイン -->
+    <!-- フッター -->
+    <footer class="py-4 bg-dark text-light">
+      <div class="container text-center">
+        <!-- ナビゲーション -->
+        <ul class="nav justify-content-center mb-3">
+          <li class="nav-item">
+            <a href="#" class="nav-link">Top</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Contents</a>
+          </li>
         </ul>
-      </nav>
-    </header>
-    <section>
-      <section class="fizz-buzz-component">
-        <h2>FizzBuzz</h2>
-        <div id="app"></div>
-        <div id="mocha"></div>
-      </section>
-    </section>
-    <footer>
-      <p>Copyright</p>
-      <address>hiroshima.arc@gmail.com</address>
+        <!-- /ナビゲーション -->
+        <p>
+          <small>Copyright &copy;2019 HiroshiamARC, All Rights Reserved.</small>
+        </p>
+      </div>
     </footer>
-
-    <script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
+    <!-- /フッター -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
     <script>
       mocha.setup("tdd");
-
+    </script>
+    <script>
       const assert = chai.assert;
       suite("FizzBuzzTest", () => {
-        test("1から100までをプリントする、ただし3で割り切れる場合はFizzを5で割り切れる場合はBuzzを15で割り切れる場合はFizzBuzzをプリントする", () => {
-          let list = generateList();
-          assert.equal(1, list[0]);
-          assert.equal("Fizz", list[2]);
-          assert.equal("Buzz", list[4]);
-          assert.equal("FizzBuzz", list[14]);
-          assert.equal("Buzz", list[99]);
-        });
-
-        test("3で割り切れる場合はFizzをプリントする", () => {
-          assert.equal("Fizz", fizzBuzz(3));
-        });
-
-        test("5で割り切れる場合はBuzzをプリントする", () => {
-          assert.equal("Buzz", fizzBuzz(5));
-        });
-
-        test("15で割り切れる場合はFizzBuzzをプリントする", () => {
-          assert.equal("FizzBuzz", fizzBuzz(15));
-        });
-
-        test("数字の合計は2632", () => {
-          const list = generateList();
-          const result = list
-            .filter(i => !isNaN(i))
-            .map(i => i)
-            .reduce((a, b) => a + b);
-          assert.equal(2632, result);
-        });
-
-        test("Fizzの合計数は27", () => {
-          const list = generateList();
-          const result = list.filter(i => i === "Fizz").map(i => i).length;
-          assert.equal(27, result);
-        });
-
-        test("Buzzの合計数は14", () => {
-          const list = generateList();
-          const result = list.filter(i => i === "Buzz").map(i => i).length;
-          assert.equal(14, result);
-        });
-
-        test("FizzBuzzの合計数は6", () => {
-          const list = generateList();
-          const result = list.filter(i => i === "FizzBuzz").map(i => i).length;
-          assert.equal(6, result);
+        test("greeting", () => {
+          assert.equal(greeting(), "Hello, world");
         });
       });
-
-      const MAX_NUMBER = 100;
-
-      function fizzBuzz(number) {
-        const isFizz = number % 3 === 0;
-        const isBuzz = number % 5 === 0;
-
-        if (isFizz && isBuzz) return "FizzBuzz";
-        if (isFizz) return "Fizz";
-        if (isBuzz) return "Buzz";
-
-        return number;
+      function greeting() {
+        return "Hello, world";
       }
-
-      function generateList() {
-        // 配列が0から始まるので1をたさないと99までしか表示されない
-        return [...Array(MAX_NUMBER + 1).keys()].slice(1).map(i => fizzBuzz(i));
-      }
-
-      function renderTable() {
-        const header = (() => {
-          const items = () => {
-            let item = "<tr>";
-            [...Array(10).keys()].forEach(i => {
-              item += `<th>${i + 1}</th>`;
-            });
-            item += "</tr>";
-            return item;
-          };
-
-          return `
-            <thead>
-              ${items()}
-            </thead>
-        `;
-        })();
-
-        const body = (() => {
-          const items = () => {
-            let item = "<tr>";
-            generateList().forEach((v, k) => {
-              const isNextLine = (k + 1) % 10 === 0;
-              isNextLine
-                ? (item += `<td>${v}</td></tr><tr>`)
-                : (item += `<td>${v}</td>`);
-            });
-            return item;
-          };
-
-          return `
-            <tbody>
-              ${items()}
-            </tbody>
-        `;
-        })();
-
-        document.querySelector("#app").innerHTML = `
-          <table>
-            ${header}
-            ${body}
-          </table>
-        `;
-      }
-
-      renderTable();
     </script>
-
     <script>
-      mocha.checkLeaks();
       mocha.globals(["jQuery"]);
       mocha.run();
     </script>
