@@ -9,9 +9,12 @@
 
 ### Quick Start
 
-#### 以下のリンクをクリックしてクラウドIDEを起動する
+#### 以下のリンクからクラウドIDEを起動する
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroshima-arc/tdd_js)
+
+![](./docs/images/20191117005.png)
+
 
 #### IDEが起動したらターミナルに以下のコマンドを入力する
 
