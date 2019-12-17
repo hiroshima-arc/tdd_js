@@ -10,7 +10,8 @@
     "lint": "eslint src/**/*.js",
     "format": "prettier --write src/**/*.*",
     "watch": "watch 'npm-run-all format' ./src ",
-    "app": "browser-sync start --config bs-config.js"
+    "app": "browser-sync start --config bs-config.js",
+    "deploy": "now"
   },
   "repository": {
     "type": "git",
