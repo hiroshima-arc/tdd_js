@@ -195,15 +195,44 @@
               assert.equal("Buzz", fizzbuzz.convert(5));
             });
           });
+          suite("三と五の倍数の場合", () => {
+            test("15を渡したら文字列FizzBuzzを返す", () => {
+              assert.equal("FizzBuzz", fizzbuzz.convert(15));
+            });
+          });
           suite("その他の場合", () => {
             test("1を渡したら文字列1を返す", () => {
               assert.equal("1", fizzbuzz.convert(1));
+            });
+          });
+          suite("1 から 100 までの数", () => {
+            let result;
+            setup("前準備", () => {
+              result = fizzbuzz.convertList();
+            });
+            test("はじめは文字列の1を返す", () => {
+              assert.equal("1", result[0]);
+            });
+            test("最後は文字列の100を返す", () => {
+              assert.equal("Buzz", result[99]);
+            });
+            test("2番は文字列Fizzを返す", () => {
+              assert.equal("Fizz", result[2]);
+            });
+            test("4番は文字列Buzzを返す", () => {
+              assert.equal("Buzz", result[4]);
+            });
+            test("14番は文字列FizzBuzzを返す", () => {
+              assert.equal("FizzBuzz", result[14]);
             });
           });
         });
 
         class FizzBuzz {
           convert(num) {
+            if (num % 3 === 0 && num % 5 === 0) {
+              return "FizzBuzz"
+            }
             if (num % 3 === 0) {
               return "Fizz";
             }
@@ -211,6 +240,14 @@
               return "Buzz";
             }
             return num.toString();
+          }
+
+          convertList() {
+            let result = [];
+            for (let i = 0; i < 100; i++) {
+              result[i] = this.convert(i + 1);
+            }
+            return result;
           }
         }
       </script>
