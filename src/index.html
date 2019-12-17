@@ -27,7 +27,7 @@
       <h1>JavaScript入門</h1>
     </div>
     <!-- ナビゲーションバー -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark stick-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark stick-top">
       <!-- サブコンポーネント -->
       <div class="container">
         <a href="index.html" class="navbar-brand">TDDJavaScript</a>
@@ -154,10 +154,12 @@
       <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
       <script>
-        const dev = document.querySelector("#app"); if (dev !== null) {
+        const dev = document.querySelector("#app");
+        if (dev !== null) {
           dev.innerHTML = `
           <div class="container">
             <h1>FizzBuzz</h1>
+            <div id="mocha"></div>
             <div class="row p-3">
               <div id="spec"></div>
             </div>
@@ -168,7 +170,6 @@
             </div>
             <h2>アプリケーション</h2>
             <div class="py-3">
-              <div id="mocha"></div>
               <div id="app-fizz-buzz"></div>
             </div>
           </div> `;
@@ -180,12 +181,37 @@
 
         const assert = chai.assert;
         suite("FizzBuzzTest", () => {
-          test("greeting", () => {
-            assert.equal("Hello, world", greeting());
+          let fizzbuzz;
+          setup("前準備", () => {
+            fizzbuzz = new FizzBuzz();
+          });
+          suite("三の倍数の場合", () => {
+            test("3を渡したら文字列Fizzを返す", () => {
+              assert.equal("Fizz", fizzbuzz.convert(3));
+            });
+          });
+          suite("五の倍数の場合", () => {
+            test("5を渡したら文字列Buzzを返す", () => {
+              assert.equal("Buzz", fizzbuzz.convert(5));
+            });
+          });
+          suite("その他の場合", () => {
+            test("1を渡したら文字列1を返す", () => {
+              assert.equal("1", fizzbuzz.convert(1));
+            });
           });
         });
-        function greeting() {
-          return "Hello, world";
+
+        class FizzBuzz {
+          convert(num) {
+            if (num % 3 === 0) {
+              return "Fizz";
+            }
+            if (num % 5 === 0) {
+              return "Buzz";
+            }
+            return num.toString();
+          }
         }
       </script>
 
@@ -206,9 +232,11 @@
 ## ToDoリスト
 
 - [ ] 数を文字列にして返す
-- [ ] 3 の倍数のときは数の代わりに｢Fizz｣と返す
-- [ ] 5 の倍数のときは｢Buzz｣と返す
-- [ ] 3 と 5 両方の倍数の場合には｢FizzBuzz｣と返す
+  - [x] 1を渡したら文字列"1"を返す
+  - [x] 2を渡したら文字列"2"を返す
+- [x] 3 の倍数のときは数の代わりに｢Fizz｣と返す
+- [x] 5 の倍数のときは｢Buzz｣と返す
+- [x] 3 と 5 両方の倍数の場合には｢FizzBuzz｣と返す
 - [ ] 1 から 100 までの数
 - [ ] プリントする
         `
