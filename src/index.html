@@ -257,42 +257,55 @@
           }
         }
 
-        const result = () => {
-          const fizzbuzz = (num) => {
-            const fizzbuzz = new FizzBuzz()
-            return fizzbuzz.convert(num)
-          }
+        class FizzBuzzView {
+          render() {
+            const result = () => {
+              const fizzbuzz = num => {
+                const fizzbuzz = new FizzBuzz();
+                return fizzbuzz.convert(num);
+              };
 
-          const header = () => {
-            const th = [...Array(11).keys()].slice(1).map(i => `<th>${i}</th>`)
-            return `
+              const header = () => {
+                const th = [...Array(11).keys()]
+                  .slice(1)
+                  .map(i => `<th>${i}</th>`);
+                return `
               <thead>
                 <tr>
-                  ${th.join('')}
+                  ${th.join("")}
                 </tr>
               </thaed>
-            `
-          }
+            `;
+              };
 
-          const body = () => {
-            const td = (row) => [...Array(10).keys()].map(i => `<td>${fizzbuzz((row + 1) * (i + 1))}</td>`).join('')
-            const tr = (td) => [...Array(10).keys()].map(i => `<tr>${td(i)}</tr>`).join('')
+              const body = () => {
+                const td = row =>
+                  [...Array(10).keys()]
+                    .map(i => `<td>${fizzbuzz((row + 1) * (i + 1))}</td>`)
+                    .join("");
+                const tr = td =>
+                  [...Array(10).keys()].map(i => `<tr>${td(i)}</tr>`).join("");
 
-            return `
+                return `
               <tbody>
                 ${tr(td)}
               </tbody>
-            `
-          }
-          return `
+            `;
+              };
+              return `
             <table class="table">
               ${header()}
               ${body()}
             </table>
         `;
-        };
+            };
 
-        document.querySelector("#app-fizz-buzz").innerHTML = result();
+            document.querySelector("#app-fizz-buzz").innerHTML = result();
+          }
+        }
+
+        const view = new FizzBuzzView();
+        view.render()
       </script>
 
       <script>
@@ -334,6 +347,10 @@ class FizzBuzz {
   convert(): String
   convertList(): List
 }
+class FizzBuzzView {
+  render()
+}
+FizzBuzz <- FizzBuzzView
                   `;
           compress(source, outputId);
         })();
