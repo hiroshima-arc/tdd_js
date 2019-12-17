@@ -244,9 +244,10 @@
 
           convertList() {
             let result = [];
-            for (let i = 0; i < 100; i++) {
-              result[i] = this.convert(i + 1);
-            }
+            const range = [...Array(100).keys()]
+            Object.keys(range).forEach(key => {
+              result.push(this.convert(parseInt(key) + 1))
+            })
             return result;
           }
         }
