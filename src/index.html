@@ -263,7 +263,7 @@
           }
 
           render() {
-            const result = () => {
+            const create = () => {
               const header = () => {
                 const th = [...Array(11).keys()]
                   .slice(1)
@@ -297,15 +297,20 @@
             `;
               };
 
+              const table = () => {
               return `
-                <table class="table table-sm table-striped">
+                <table>
                   ${header()}
                   ${body()}
                 </table>
-        `;
+              `;
+              }
+
+              return table()
             };
 
-            document.querySelector("#app-fizz-buzz").innerHTML = result();
+            document.querySelector("#app-fizz-buzz").innerHTML = create();
+            document.querySelector("#app-fizz-buzz > table").className = "table table-sm table-striped";
           }
         }
 
