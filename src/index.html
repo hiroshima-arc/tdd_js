@@ -243,11 +243,8 @@
           }
 
           convertList() {
-            let result = [];
-            const range = [...Array(100).keys()];
-            return Object.keys(range).map(key =>
-              this.convert(parseInt(key) + 1)
-            );
+            const range = [...Array(101).keys()].slice(1);
+            return range.map(this.convert);
           }
         }
       </script>
