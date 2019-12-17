@@ -264,53 +264,56 @@
 
           render() {
             const create = () => {
-              const header = () => {
-                const th = [...Array(11).keys()]
-                  .slice(1)
-                  .map(i => `<th>${i}</th>`);
-                return `
+              const table = () => {
+                const header = () => {
+                  const th = [...Array(11).keys()]
+                    .slice(1)
+                    .map(i => `<th>${i}</th>`);
+                  return `
               <thead>
                 <tr>
                   ${th.join("")}
                 </tr>
               </thaed>
             `;
-              };
+                };
 
-              const body = () => {
-                const td = row =>
-                  [...Array(10).keys()]
-                    .map(
-                      i =>
-                        `<td>${this._fizzbuzz.convert(
-                          (row + 1) * (i + 1)
-                        )}</td>`
-                    )
-                    .join("");
-                const tr = td =>
-                  [...Array(10).keys()].map(i => `<tr>${td(i)}</tr>`).join("");
+                const body = () => {
+                  const td = row =>
+                    [...Array(10).keys()]
+                      .map(
+                        i =>
+                          `<td>${this._fizzbuzz.convert(
+                            (row + 1) * (i + 1)
+                          )}</td>`
+                      )
+                      .join("");
+                  const tr = td =>
+                    [...Array(10).keys()]
+                      .map(i => `<tr>${td(i)}</tr>`)
+                      .join("");
 
-                return `
+                  return `
               <tbody>
                 ${tr(td)}
               </tbody>
             `;
-              };
+                };
 
-              const table = () => {
-              return `
+                return `
                 <table>
                   ${header()}
                   ${body()}
                 </table>
               `;
-              }
+              };
 
-              return table()
+              return table();
             };
 
             document.querySelector("#app-fizz-buzz").innerHTML = create();
-            document.querySelector("#app-fizz-buzz > table").className = "table table-sm table-striped";
+            document.querySelector("#app-fizz-buzz > table").className =
+              "table table-sm table-striped";
           }
         }
 
