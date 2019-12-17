@@ -23,10 +23,11 @@
     <header class="py-4"></header>
     <!-- /ヘッダー -->
     <div class="container text-center">
-      <h1>テスト駆動開発から始めるJavaScript入門</h1>
+      <h1>テスト駆動開発から始める</h1>
+      <h1>JavaScript入門</h1>
     </div>
     <!-- ナビゲーションバー -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark stick-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark stick-top">
       <!-- サブコンポーネント -->
       <div class="container">
         <a href="index.html" class="navbar-brand">TDDJavaScript</a>
@@ -77,58 +78,10 @@
       </div>
       <!-- サブコンポーネント -->
     </nav>
-    <!-- /ナビゲーションバー -->
     <!-- メイン -->
     <main>
-      <section id="mocha"></section>
       <!-- コンテンツ01 -->
-      <div class="py-4">
-        <section id="fizz-buzz">
-          <div class="container">
-            <div class="row">
-              <h2>FizzBuzz</h2>
-            </div>
-            <div class="row p-3">
-              <!-- 左側カラム（画面幅md以上）　-->
-              <div class="col-md-2">
-                <h3>仕様</h3>
-              </div>
-              <!-- 右側カラム（画面幅md以上） -->
-              <div class="col-md-10">
-                <p>1 から 100 までの数をプリントするプログラムを書け。</p>
-                <p>
-                  ただし 3 の倍数のときは数の代わりに｢Fizz｣と、5
-                  の倍数のときは｢Buzz｣とプリントし、
-                </p>
-                <p>3 と 5 両方の倍数の場合には｢FizzBuzz｣とプリントすること</p>
-              </div>
-            </div>
-            <div class="row p-3">
-              <!-- 左側カラム（画面幅md以上）　-->
-              <div class="col-md-2">
-                <h3>ToDoリスト</h3>
-              </div>
-              <!-- 右側カラム（画面幅md以上） -->
-              <div class="col-md-10">
-                <ul>
-                  <li>数を文字列にして返す</li>
-                  <li>
-                    3
-                    の倍数のときは数の代わりに｢Fizz｣と返す
-                  </li>
-                  <li>5 の倍数のときは｢Buzz｣と返す</li>
-                  <li>
-                    3 と 5
-                    両方の倍数の場合には｢FizzBuzz｣と返す
-                  </li>
-                  <li>1 から 100 まで数を返す</li>
-                  <li>プリントする</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+      <div id="app"></div>
       <!-- /コンテンツ01 -->
     </main>
     <!-- /メイン -->
@@ -154,42 +107,208 @@
       </div>
     </footer>
     <!-- /フッター -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
-    <script>
-      mocha.setup("tdd");
-    </script>
-    <script>
-      const assert = chai.assert;
-      suite("FizzBuzzTest", () => {
-        test("greeting", () => {
-          assert.equal(greeting(), "Hello, world");
+    <div id="dev">
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+      ></script>
+      <!-- PapaParse -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.js"></script>
+
+      <!-- nanoSQL2 -->
+      <!-- ES6 Only (Faster & Smaller) -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/@nano-sql/core@2.3.7/dist/nano-sql.min.js"
+        integrity="sha256-W1pVgKda7GC4fwXqq9jfOrssBDJJXZqck+ultRPVzmc="
+        crossorigin="anonymous"
+      ></script>
+      <!-- ES5 (Internet Explorer/Old Browser Support) -->
+      <!-- Promise must be polyfilled as well -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/@nano-sql/core@2.3.7/dist/nano-sql.min.es5.js"
+        integrity="sha256-1t9VlpFUgHaxlLQy6HM9ROQvTiuUv2M12Fp1oTh3+yg="
+        crossorigin="anonymous"
+      ></script>
+
+      <!-- markdown -->
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+      <!-- PluntUML -->
+      <!--  taken from https://github.com/johan/js-deflate -->
+      <script src="./lib/rawdeflate.js"></script>
+
+      <!-- mocha, chai -->
+      <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
+      <script>
+        const dev = document.querySelector("#app"); if (dev !== null) {
+          dev.innerHTML = `
+          <div class="container">
+            <h1>FizzBuzz</h1>
+              <div class="py-3">
+              <div id="mocha"></div>
+            <div class="row p-3">
+              <div id="spec"></div>
+            </div>
+            <h2>クラス図</h2>
+            <div class="row p-3">
+              <img id="class-im"
+              src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+            </div>
+            <h2>アプリケーション</h2>
+              <div id="app-fizz-buzz"></div>
+            </div>
+          </div> `;
+        }
+      </script>
+
+      <script>
+        mocha.setup("tdd");
+
+        const assert = chai.assert;
+        suite("FizzBuzzTest", () => {
+          test("greeting", () => {
+            assert.equal("Hello, world", greeting());
+          });
         });
-      });
-      function greeting() {
-        return "Hello, world";
-      }
-    </script>
-    <script>
-      mocha.globals(["jQuery"]);
-      mocha.run();
-    </script>
+        function greeting() {
+          return "Hello, world";
+        }
+      </script>
+
+      <script>
+        const spec = document.getElementById("spec");
+        if (spec) {
+          // eslint-disable-next-line no-undef
+          spec.innerHTML = marked(
+            `
+## 仕様
+
+1 から 100 までの数をプリントするプログラムを書け。
+
+ただし 3 の倍数のときは数の代わりに｢Fizz｣と、5 の倍数のときは｢Buzz｣とプリントし、
+
+3 と 5 両方の倍数の場合には｢FizzBuzz｣とプリントすること
+
+## ToDoリスト
+        `
+          );
+        }
+      </script>
+      <script>
+        /* eslint-disable */
+        const classDiagram = (() => {
+          const inputId = "class-diagram-input";
+          const outputId = "class-im";
+          const source = `
+class HelloWorld {
+  greeting(): String
+}
+                  `;
+          compress(source, outputId);
+        })();
+
+        function encode64(data) {
+          r = "";
+          for (i = 0; i < data.length; i += 3) {
+            if (i + 2 == data.length) {
+              r += append3bytes(data.charCodeAt(i), data.charCodeAt(i + 1), 0);
+            } else if (i + 1 == data.length) {
+              r += append3bytes(data.charCodeAt(i), 0, 0);
+            } else {
+              r += append3bytes(
+                data.charCodeAt(i),
+                data.charCodeAt(i + 1),
+                data.charCodeAt(i + 2)
+              );
+            }
+          }
+          return r;
+        }
+
+        function append3bytes(b1, b2, b3) {
+          c1 = b1 >> 2;
+          c2 = ((b1 & 0x3) << 4) | (b2 >> 4);
+          c3 = ((b2 & 0xf) << 2) | (b3 >> 6);
+          c4 = b3 & 0x3f;
+          r = "";
+          r += encode6bit(c1 & 0x3f);
+          r += encode6bit(c2 & 0x3f);
+          r += encode6bit(c3 & 0x3f);
+          r += encode6bit(c4 & 0x3f);
+          return r;
+        }
+
+        function encode6bit(b) {
+          if (b < 10) {
+            return String.fromCharCode(48 + b);
+          }
+          b -= 10;
+          if (b < 26) {
+            return String.fromCharCode(65 + b);
+          }
+          b -= 26;
+          if (b < 26) {
+            return String.fromCharCode(97 + b);
+          }
+          b -= 26;
+          if (b == 0) {
+            return "-";
+          }
+          if (b == 1) {
+            return "_";
+          }
+          return "?";
+        }
+
+        var deflater = window.SharedWorker && new SharedWorker("rawdeflate.js");
+        if (deflater) {
+          deflater.port.addEventListener("message", done_deflating, false);
+          deflater.port.start();
+        } else if (window.Worker) {
+          deflater = new Worker("rawdeflate.js");
+          deflater.onmessage = done_deflating;
+        }
+
+        function done_deflating(e, id) {
+          document.getElementById(id).src =
+            "http://www.plantuml.com/plantuml/img/" + encode64(e.data);
+        }
+
+        function compress(s, id) {
+          //UTF8
+          s = unescape(encodeURIComponent(s));
+
+          if (deflater) {
+            if (deflater.port && deflater.port.postMessage) {
+              deflater.port.postMessage(s);
+            } else {
+              deflater.postMessage(s);
+            }
+          } else {
+            setTimeout(function() {
+              done_deflating({ data: deflate(s) }, id);
+            }, 100);
+          }
+        }
+      </script>
+      <script>
+        mocha.globals(["jQuery"]);
+        mocha.run();
+      </script>
+    </div>
   </body>
 </html>
