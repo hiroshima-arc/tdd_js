@@ -229,6 +229,10 @@
         });
 
         class FizzBuzz {
+          static get MAX_NUMBER() {
+            return 100;
+          }
+
           convert(num) {
             if (num % 3 === 0 && num % 5 === 0) {
               return "FizzBuzz";
@@ -243,7 +247,10 @@
           }
 
           convertList() {
-            return [...Array(101).keys()].slice(1).map(this.convert);
+            // 配列は0から始まるの1を足している
+            return [...Array(FizzBuzz.MAX_NUMBER + 1).keys()]
+              .slice(1)
+              .map(this.convert);
           }
         }
       </script>
