@@ -159,7 +159,6 @@
           dev.innerHTML = `
           <div class="container">
             <h1>FizzBuzz</h1>
-            <div id="mocha"></div>
             <div class="row p-3">
               <div id="spec"></div>
             </div>
@@ -171,6 +170,7 @@
             <h2>アプリケーション</h2>
             <div class="py-3">
               <div id="app-fizz-buzz"></div>
+              <div id="mocha"></div>
             </div>
           </div> `;
         }
@@ -256,6 +256,43 @@
               .map(this.convert);
           }
         }
+
+        const result = () => {
+          const fizzbuzz = (num) => {
+            const fizzbuzz = new FizzBuzz()
+            return fizzbuzz.convert(num)
+          }
+
+          const header = () => {
+            const th = [...Array(11).keys()].slice(1).map(i => `<th>${i}</th>`)
+            return `
+              <thead>
+                <tr>
+                  ${th.join('')}
+                </tr>
+              </thaed>
+            `
+          }
+
+          const body = () => {
+            const td = (row) => [...Array(10).keys()].map(i => `<td>${fizzbuzz((row + 1) * (i + 1))}</td>`).join('')
+            const tr = (td) => [...Array(10).keys()].map(i => `<tr>${td(i)}</tr>`).join('')
+
+            return `
+              <tbody>
+                ${tr(td)}
+              </tbody>
+            `
+          }
+          return `
+            <table class="table">
+              ${header()}
+              ${body()}
+            </table>
+        `;
+        };
+
+        document.querySelector("#app-fizz-buzz").innerHTML = result();
       </script>
 
       <script>
@@ -281,7 +318,7 @@
 - [x] 5 の倍数のときは｢Buzz｣と返す
 - [x] 3 と 5 両方の倍数の場合には｢FizzBuzz｣と返す
 - [x] 1 から 100 までの数
-- [ ] プリントする
+- [x] プリントする
         `
           );
         }
