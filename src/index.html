@@ -231,7 +231,7 @@
         class FizzBuzz {
           convert(num) {
             if (num % 3 === 0 && num % 5 === 0) {
-              return "FizzBuzz"
+              return "FizzBuzz";
             }
             if (num % 3 === 0) {
               return "Fizz";
@@ -244,11 +244,10 @@
 
           convertList() {
             let result = [];
-            const range = [...Array(100).keys()]
-            Object.keys(range).forEach(key => {
-              result.push(this.convert(parseInt(key) + 1))
-            })
-            return result;
+            const range = [...Array(100).keys()];
+            return Object.keys(range).map(key =>
+              this.convert(parseInt(key) + 1)
+            );
           }
         }
       </script>
