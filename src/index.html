@@ -280,7 +280,7 @@
 - [x] 3 の倍数のときは数の代わりに｢Fizz｣と返す
 - [x] 5 の倍数のときは｢Buzz｣と返す
 - [x] 3 と 5 両方の倍数の場合には｢FizzBuzz｣と返す
-- [ ] 1 から 100 までの数
+- [x] 1 から 100 までの数
 - [ ] プリントする
         `
           );
@@ -293,7 +293,9 @@
           const outputId = "class-im";
           const source = `
 class FizzBuzz {
+  {static} MAX_NUMBER
   convert(): String
+  convertList(): List
 }
                   `;
           compress(source, outputId);
