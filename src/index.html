@@ -243,8 +243,7 @@
           }
 
           convertList() {
-            const range = [...Array(101).keys()].slice(1);
-            return range.map(this.convert);
+            return [...Array(101).keys()].slice(1).map(this.convert);
           }
         }
       </script>
